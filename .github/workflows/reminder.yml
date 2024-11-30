@@ -1,6 +1,12 @@
+# GitHub Actionsを使ってDiscordでリマインドを行う方法
+# このスクリプトは、GitHub Actionsを使って毎週火曜日の13:00にDiscordのWebhookを使ってリマインドを送信します。
+
 name: Weekly Discord Reminder
 
 on:
+  push:
+    branches:
+      - main  # mainブランチにプッシュしたときに実行します
   schedule:
     - cron: '0 4 * * 2'  # 毎週火曜日の13:00 (UTCは4:00に相当)
 
@@ -27,7 +33,7 @@ jobs:
                 request = Net::HTTP::Post.new(uri.request_uri, header);
                 request.body = payload;
                 response = http.request(request);
-                puts \"Response #{response.code} #{response.message}: #{response.body}\";
+                puts "Response #{response.code} #{response.message}: #{response.body}";
               end;
               send_reminder;" > reminder_script.rb
         ruby reminder_script.rb

@@ -24,7 +24,7 @@ jobs:
         require 'json'
 
         WEBHOOK_URL = ENV['WEBHOOK_URL']
-        REMINDER_MESSAGE = '@冬プロジェクト 今日は進捗報告デーです！ チームの進捗と今週の目標を確認し，進捗確認フォーラムへ投稿しましょう！'
+        REMINDER_MESSAGE = '<@&1309559210136305684> 今日は進捗報告デーです！ チームの進捗と今週の目標を確認し，進捗確認フォーラムへ投稿しましょう！'
 
         def send_reminder
           uri = URI.parse(WEBHOOK_URL)
